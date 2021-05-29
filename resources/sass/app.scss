@@ -1,0 +1,61 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// transform Laravel's default nevigation bar into a sidebar
+#app {
+    height: 100vh;
+    position: relative;
+    display: flex;
+
+    @media screen and (max-width: 991px) {
+        display: block;
+        overflow: hidden;
+    }
+
+    // Sidebar styling
+    .sidebar {
+        width: auto;
+        height: 100vh;
+
+        .close-nav {
+            cursor: pointer;
+            display: none;
+        }
+
+        .sidebar-nav {
+            list-style: none;   // remove default html list style
+        }
+
+        // Hide sidebar when screen width is below 992px
+        @media screen and (max-width: 991px) {
+            position: absolute;
+            top: 0;
+            right: calc(-100% - 0px);   // hide the sidebar by moving it completely out of the its parent wrapper to the right
+            transition: .5s;
+
+            .close-nav {
+                display: inline-block;
+            }
+        }
+    }
+
+    // Display top navigation bar when screen width is below 992px, or otherwise, hide it
+    .navbar {
+        display: none;
+
+        @media screen and (max-width: 991px) {
+            display: flex;
+
+            .navbar-toggler {
+                display: inline-block;
+            }
+        }
+    }
+
+}
